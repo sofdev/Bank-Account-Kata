@@ -1,8 +1,5 @@
 package fr.lcdlv.kata.service;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -26,7 +23,6 @@ public class AccountServiceTest {
 	@Test
 	@DisplayName("find account nominal case")
 	void should_return_an_account() {
-		System.out.println("TU");
 		// Given
 		final int accountNumber = 1111;
 		Account account = new Account(1, accountNumber, 1000.0);
