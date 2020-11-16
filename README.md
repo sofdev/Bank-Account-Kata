@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=sofdev_Bank-Account-Kata)
+
 # Bank Account Kata
 Bank Account Kata REST spring boot application. this application allows: 
   - Deposit money
