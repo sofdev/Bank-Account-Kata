@@ -16,9 +16,11 @@ pipeline {
 	            steps {
 					
 					 sh '''
+					 echo "$USER"
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
+                sh 'mvn clean'
                     git branch: 'master', url: params.GIT_URL
                 }
       }
