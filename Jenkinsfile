@@ -16,7 +16,10 @@ pipeline {
 	            steps {
 					
 					 sh '''
-					 echo "$USER"
+					 def build = currentBuild.rawBuild
+def cause = build.getCause(hudson.model.Cause.UserIdCause.class)
+def name = cause.getUserName()
+echo "User: " + name
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
