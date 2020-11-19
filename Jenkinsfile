@@ -1,6 +1,12 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
 
-node {
+pipeline {
+ agent any
+    tools {
+        maven 'Maven 3.5.2'
+        jdk 'jdk11'
+    }
+    stages{
 	 	stage('SCM Checkout'){
 	    // Clone repo
 		git branch: 'master', 
@@ -9,12 +15,13 @@ node {
 	   
 	   }
         stage('Build') { 
-        withMaven {
-   		sh 'mvn -B -DskipTests clean package'
-        }
+        steps {
+                sh 'mvn clean install' 
+            }
                
         }
         stage('Test') {
                 sh 'mvn test'
         }
+}
 }
