@@ -3,7 +3,7 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 pipeline {
  agent any
    tools {
-        maven 'Maven 3.6.3'
+        maven 'Maven 3.5.2'
     }
     parameters {
         // GIT
