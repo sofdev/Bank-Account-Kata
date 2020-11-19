@@ -2,6 +2,9 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 
 pipeline {
  agent any
+    tools {
+        maven "Maven"
+    }
     parameters {
         // GIT
         string(name: 'GIT_URL', defaultValue: 'https://github.com/sofdev/Bank-Account-Kata.git', description: 'Url git du produit')
@@ -13,8 +16,11 @@ pipeline {
                 }
       }
 	  stage('Build') { 
+	  
         steps {
+        withMaven(maven: 'Maven 3.5.2') {
                 sh 'mvn clean install' 
+                }
             }
                
       }
