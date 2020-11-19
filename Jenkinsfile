@@ -6,14 +6,17 @@ pipeline {
         maven 'Maven 3.5.2'
         jdk 'jdk11'
     }
+        parameters {
+        // GIT
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/sofdev/Bank-Account-Kata.git', description: 'Url git du produit')
+    }
     stages{
-	 	stage('SCM Checkout'){
-	    // Clone repo
-		git branch: 'master', 
-		credentialsId: 'github', 
-		url: 'https://github.com/sofdev/Bank-Account-Kata'
-	   
-	   }
+      stage('Checkout Git repository') {
+	            steps {
+                    git branch: master, url: params.GIT_URL
+                }
+            }
+	 	
         stage('Build') { 
         steps {
                 sh 'mvn clean install' 
