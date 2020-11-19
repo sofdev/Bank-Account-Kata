@@ -12,10 +12,9 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
-	            sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+					echo $JAVA_HOME
+					sh 'javac -version'
+					sh 'java -version'
                     git branch: 'master', url: params.GIT_URL
                 }
       }
