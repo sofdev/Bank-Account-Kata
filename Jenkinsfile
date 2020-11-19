@@ -12,8 +12,10 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
-	            echo "/*/*/"
-	            echo $M2_HOME
+	            sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
                     git branch: 'master', url: params.GIT_URL
                 }
       }
