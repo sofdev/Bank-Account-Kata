@@ -1,7 +1,7 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
 
 node {
- 
+  def mvn = tool (name: 'maven3', type: 'maven') + '/usr/bin/mvn'
 	 	stage('SCM Checkout'){
 	    // Clone repo
 		git branch: 'master', 
