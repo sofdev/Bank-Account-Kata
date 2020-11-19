@@ -14,12 +14,14 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
-					
-					 sh '''
-					 def build = currentBuild.rawBuild
+					script {
+										 def build = currentBuild.rawBuild
 def cause = build.getCause(hudson.model.Cause.UserIdCause.class)
 def name = cause.getUserName()
 echo "User: " + name
+					}
+					 sh '''
+
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
