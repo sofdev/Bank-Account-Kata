@@ -12,8 +12,10 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
+					 withMaven(maven: 'Maven 3.5.2') {
+              sh 'mvn -version'
+                }
 					
-					sh 'mvn -version'
 					sh 'java -version'
                     git branch: 'master', url: params.GIT_URL
                 }
