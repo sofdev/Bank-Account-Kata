@@ -12,8 +12,8 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
-					echo $JAVA_HOME
-					sh 'javac -version'
+					echo $MAVEN_HOME
+					sh 'mvn -version'
 					sh 'java -version'
                     git branch: 'master', url: params.GIT_URL
                 }
