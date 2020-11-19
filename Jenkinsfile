@@ -4,7 +4,7 @@ pipeline {
  agent any
  
       tools { 
-        maven 'Maven 3.5.2' 
+        maven 'Maven 3.0.5' 
     }
  
     parameters {
@@ -14,18 +14,12 @@ pipeline {
     stages{
       stage('Checkout Git repository') {
 	            steps {
-					script {
-										 def build = currentBuild.rawBuild
-def cause = build.getCause(hudson.model.Cause.UserIdCause.class)
-def name = cause.getUserName()
-echo "User: " + name
-					}
-					 sh '''
-
+					
+			 sh '''
+					echo "JAVA = ${JAVA_HOME}"
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-                sh 'mvn clean'
                     git branch: 'master', url: params.GIT_URL
                 }
       }
