@@ -4,7 +4,8 @@ pipeline {
  agent any
  
       tools { 
-        maven 'Maven 3.0.5' 
+        maven 'Maven 3.5.4' 
+        java 'jdk-11.0.1'
     }
  
     parameters {
@@ -26,7 +27,7 @@ pipeline {
 	  stage('Build') { 
 	  
         steps {
-        withMaven(maven: 'Maven 3.0.5'){
+        withMaven(maven: 'Maven 3.5.4'){
                 sh 'mvn clean install' 
                 }
                 }
